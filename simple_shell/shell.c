@@ -42,5 +42,7 @@ int main(int ac, char **av)
         }
         free_tokens(tokens);
     }
+    if (fp != stdin)
+        fclose(fp);
     free(line);
 }
