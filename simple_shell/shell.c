@@ -6,11 +6,20 @@ int main(int ac, char **av)
     char **tokens;
     size_t size = 0;
     int mode = isatty(STDIN_FILENO);
+    FILE *fp;
 
+    if (ac != 1)
+    {
+        fp = fopen(av[1], "r");
+        if (fp == NULL)
+            printf("Couldn't read from file...\n");    
+    }
+    else
+        fp = stdin;
     while (true) {
-        if (mode == 1)
+        if (mode == 1 && fp == stdin)
             fprintf(stdout, "%s ", prompt);
-        if (getline(&line, &size, stdin) == -1) {
+        if (getline(&line, &size, fp) == -1) {
             if (mode == 1)
                 putchar('\n');
             break;

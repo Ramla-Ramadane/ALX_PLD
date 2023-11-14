@@ -8,6 +8,7 @@
 #include <stdbool.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <fcntl.h>
 
 //#define CMD_NEXIST   -1
 //#define CMD_EXIST     0
